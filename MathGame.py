@@ -12,17 +12,17 @@ print(name)
 print("Good Luck", name,)
 
  #to create and define a menu
-L1= print("-------------------------------------")
-L2= print("*             Math Game             *")
-L3= print("*               Menu                *")
-L4= print("*                                   *")
-L5= print("*      1. Level 1 Addition          *")
-L6= print("*      2. Level 2 Subbtraction      *")
-L7= print("*      3. Level 3 Multiplication    *")
-L8= print("*      4. Level 4 Division          *")
-L9= print("*      5. Scores                    *")
-L10= print("*     6. Exit                      *")
-L11= print("------------------------------------")
+L1= ("-------------------------------------")
+L2= ("*             Math Game             *")
+L3= ("*               Menu                *")
+L4= ("*                                   *")
+L5= ("*      1. Level 1 Addition          *")
+L6= ("*      2. Level 2 Subbtraction      *")
+L7= ("*      3. Level 3 Multiplication    *")
+L8= ("*      4. Level 4 Division          *")
+L9= ("*      5. Scores                    *")
+L10=("*     6. Exit                      *")
+L11=("------------------------------------")
 def menu():
     print(L1)
     print(L2)
@@ -35,9 +35,8 @@ def menu():
     print(L9)
     print(L10)
     print(L11)
-    time.sleep(2)
     print('Please Enter a selction 1-6')
-    inputNumber=input()
+    inputNumber=(int)(input())
     return inputNumber
 
 #score function
@@ -48,22 +47,41 @@ def printScore():
 
 digits= [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 
-def Question():
+def Question(operator):
     x = random.choice(digits)
     y = random.choice(digits)
-    print("What is " + str(x) + " x " +str(y))
-def AskNumber():
-    while (1):
-        enterAnswer=int(input("Enter an answer"))
-        break
-    if ValueError:
-        print("Incorrect Answer!")      
+    print("What is " + str(x) + operator +str(y))
+    if "+" in operator:
+        sum = x+y
+    return sum
+def addition():
+    check=True
+    turns = 10
+    score =0
+    answer =0
+    while check:
+        operator= "  + "
+        sum = Question(operator)
+        answer=int(input())
+        if sum == answer:
+            print("YOu are so smart !!")
+            score +=1
+            turns -=1
+        else:
+            print("Sorry you missed")
+            turns -=1
+        if turns== 0:
+            check=False
+            print("Your score is ", score)
+          #update score file  
 #creating function for each level
-x=menu()
-while x !=6: #loop is conditioned to an event 
+x=0
+while x !=7: #loop is conditioned to an event 
+    x=menu()
     if x==1: #Addition game
         print("Level 1 Selected")
         print("Addition Game")
+        addition()
         #Addition=True
     
     if x==2: #Subtraction Game
@@ -85,5 +103,5 @@ while x !=6: #loop is conditioned to an event
         print("Goodbye")
         sys.exit()
     time.sleep(1)
-    x=10
+   
         
